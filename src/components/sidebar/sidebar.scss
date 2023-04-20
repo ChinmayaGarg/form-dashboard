@@ -3,18 +3,45 @@
   border-right: 0.5px solid rgb(230, 227, 227);
   min-height: 100vh;
   background-color: white;
+  transition: flex 500ms ease-out;
 
   .top {
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    .logo {
-      font-size: 20px;
-      font-weight: bold;
-      color: #6439ff;
+    
+    .logoContainer{
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+            
+      .link{
+        display: flex;
+        flex:1;
+     
+        .logo {
+          font-size: 20px;
+          font-weight: bold;
+          color: #6439ff;
+          align-self: flex-start;
+          margin-left: 10px;
+          transition: opacity 500ms ease-in;
+          transition: font-size 500ms ease-in;
+        }
+      }
+      
+        .iconSvg {
+        height: 30px; 
+        width: 30px;
+        margin-right: 10px;
+        align-self: flex-end;
+        &:hover {
+          cursor: pointer;
+        }
+      }
     }
+
   }
 
   hr {
@@ -58,6 +85,8 @@
             font-weight: 600;
             color: #888;
             margin-left: 10px;
+            opacity: 1;
+            transition: opacity 500ms ease-in;
         }
       }
     }

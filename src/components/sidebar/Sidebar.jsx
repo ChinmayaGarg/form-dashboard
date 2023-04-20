@@ -1,19 +1,34 @@
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { DarkModeContext } from '../../context/darkModeContext';
 import './sidebar.scss';
+import { ReactComponent as Hamburger } from '../../data/svg/Hamburger.svg';
 
 const Sidebar = () => {
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const { dispatch } = useContext(DarkModeContext);
+
+  const handleCollapse = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
   return (
-    <div className="sidebar">
+    <div className="sidebar" style={{ flex: isCollapsed ? 1 : 0 }}>
       <div className="top">
-        <Link to="/" style={{ textDecoration: 'none' }}>
-          <span className="logo">Emploin</span>
-        </Link>
+        <div className="logoContainer">
+          <Link to="/" style={{ textDecoration: 'none' }} className="link">
+            <span className="logo" style={{}}>
+              E
+            </span>
+            <span className="logo" style={{ opacity: isCollapsed ? 1 : 0, fontSize: isCollapsed ? '20px' : '1px' }}>
+              Emploin
+            </span>
+          </Link>
+          <Hamburger onClick={handleCollapse} className="iconSvg" />
+        </div>
       </div>
 
       <hr />
@@ -24,7 +39,7 @@ const Sidebar = () => {
           <Link to="/users" style={{ textDecoration: 'none' }}>
             <li>
               <PersonOutlineIcon className="icon" />
-              <span>Users</span>
+              <span style={{ opacity: isCollapsed ? 1 : 0 }}>Users</span>
             </li>
           </Link>
 
@@ -32,13 +47,13 @@ const Sidebar = () => {
           <Link to="/forms" style={{ textDecoration: 'none' }}>
             <li>
               <AccountCircleOutlinedIcon className="icon" />
-              <span>Profile</span>
+              <span style={{ opacity: isCollapsed ? 1 : 0 }}>Profile</span>
             </li>
           </Link>
 
           <li>
             <ExitToAppIcon className="icon" />
-            <span>Logout</span>
+            <span style={{ opacity: isCollapsed ? 1 : 0 }}> Logout</span>
           </li>
         </ul>
       </div>
