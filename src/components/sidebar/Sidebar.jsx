@@ -24,7 +24,7 @@ const Sidebar = () => {
               E
             </span>
             <span className="logo" style={{ opacity: isCollapsed ? 1 : 0, fontSize: isCollapsed ? '20px' : '1px' }}>
-              Emploin
+              COMPANY
             </span>
           </Link>
           <Hamburger onClick={handleCollapse} className="iconSvg" />
